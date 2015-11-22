@@ -25,7 +25,7 @@ SECRET_KEY = 'b@s(g7d+6-z5mr6f#s9-jw@t&s=fo89eca+ef91bsi12$kb0wm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -75,7 +75,11 @@ WSGI_APPLICATION = 'number8.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
+# import dj_database_url
+#
+# DATABASES = {}
+# DATABASES['default'] =  dj_database_url.config(default='postgres://user:pass@host/db')
+# DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -101,4 +105,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
